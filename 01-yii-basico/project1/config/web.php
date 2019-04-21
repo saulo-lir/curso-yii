@@ -50,7 +50,8 @@ $config = [
             'showScriptName' => false,
             'rules' => [ // Aqui são configurados os parâmetros das actions que serão inseridas na url
                 'teste/<id>' => 'teste/index',
-                'teste/<id:\d+>/<name>' => 'teste/mais-parametros'
+                'teste/<id:\d+>/<name>' => 'teste/mais-parametros',
+                'teste/listar/cursos' => 'teste/get-courses'
             ],
         ],
 

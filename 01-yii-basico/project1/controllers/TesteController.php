@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Course;
+
 class TesteController extends \yii\web\Controller
 {
     public function actionIndex($id = 500)
@@ -21,6 +23,17 @@ class TesteController extends \yii\web\Controller
     {
         echo $id.' - '.$name;
         exit;
+    }
+
+    // Consultando dados do banco
+    public function actionGetCourses()
+    {
+        $courses = Course::find()->all();
+
+        foreach($courses as $course){
+            echo $course->id.' - Nome: '.$course->name.' - '.$course->hours;
+            echo '<br/>';
+        }
     }
 
 }
