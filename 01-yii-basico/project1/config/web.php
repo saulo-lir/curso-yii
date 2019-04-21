@@ -44,14 +44,16 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+        /* Descomentando essa configuração, as urls amigáveis estarão ativadas */
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
+            'rules' => [ // Aqui são configurados os parâmetros das actions que serão inseridas na url
+                'teste/<id>' => 'teste/index',
+                'teste/<id:\d+>/<name>' => 'teste/mais-parametros'
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];
