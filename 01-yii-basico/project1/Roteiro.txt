@@ -2,12 +2,16 @@
 
 yii gii/controller --controllerClass="app\controllers\TestController"
 
-2) Criando uma migração:
+2) Criando um controller junto com as actions:
+
+yii gii/controller --controllerClass="app\controllers\CourseController" --actions="index,create,update,delete
+
+3) Criando uma migração:
 
 yii migrate/create create_courses_table ----fields="id:primaryKey,name:string,hours:integer"
 
-3) Subir a migração (criar a tabela):
+4) Subir a migração (criar a tabela):
 
 yii migrate/up
 
-4) Deletar a tabela:
+5) Deletar a tabela:
