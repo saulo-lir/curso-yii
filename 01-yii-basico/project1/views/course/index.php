@@ -13,6 +13,7 @@ use yii\helpers\Url; // Helper de urls
             <th>ID</th>
             <th>Name</th>
             <th>Hours</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +22,7 @@ use yii\helpers\Url; // Helper de urls
                 <td><?= $course->id ?></td>
                 <td><?= $course->name ?></td>
                 <td><?= $course->hours ?></td>
+                <td><a href="<?= Url::to(['course/update', 'id' => $course->id]) ?>">Editar Curso</a></td>
             </tr>
         <?php } ?>
     </tbody>

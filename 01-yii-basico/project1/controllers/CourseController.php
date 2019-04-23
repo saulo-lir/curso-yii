@@ -47,9 +47,25 @@ class CourseController extends \yii\web\Controller
         return $this->render('delete');
     }
 
-    public function actionUpdate()
+    public function actionUpdate($id)
     {
-        return $this->render('update');
+        $model = Course::findOne($id);
+
+        if(!$model){
+            throw new NotFoundHttpException("Curso não encontrado!");
+        }
+
+        $request = Yii::$app->request;
+
+        if($request->isPost){
+            $model->attributes = $request->post();
+            $model->save();
+            return $this->redirect(['course/index']);
+        }
+
+        return $this->render('update', [
+            'model' => $model
+        ]);
     }
 
 }

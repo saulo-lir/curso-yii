@@ -51,7 +51,8 @@ $config = [
             'rules' => [ // Aqui são configurados os parâmetros das actions que serão inseridas na url
                 'teste/<id>' => 'teste/index',
                 'teste/<id:\d+>/<name>' => 'teste/mais-parametros',
-                'teste/listar/cursos' => 'teste/get-courses'
+                'teste/listar/cursos' => 'teste/get-courses',
+                'course/<id:\d+>/update' => 'course/update'
             ],
         ],
 
