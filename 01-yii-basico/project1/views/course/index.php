@@ -22,7 +22,10 @@ use yii\helpers\Url; // Helper de urls
                 <td><?= $course->id ?></td>
                 <td><?= $course->name ?></td>
                 <td><?= $course->hours ?></td>
-                <td><a href="<?= Url::to(['course/update', 'id' => $course->id]) ?>">Editar Curso</a></td>
+                <td>
+                    <a href="<?= Url::to(['course/update', 'id' => $course->id]) ?>">Editar Curso</a> |
+                    <a href="<?= Url::to(['course/delete', 'id' => $course->id]) ?>">Excluir Curso</a>
+                </td>
             </tr>
         <?php } ?>
     </tbody>

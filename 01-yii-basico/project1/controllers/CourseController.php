@@ -42,11 +42,6 @@ class CourseController extends \yii\web\Controller
         return $this->render('create');
     }
 
-    public function actionDelete()
-    {
-        return $this->render('delete');
-    }
-
     public function actionUpdate($id)
     {
         $model = Course::findOne($id);
@@ -66,6 +61,18 @@ class CourseController extends \yii\web\Controller
         return $this->render('update', [
             'model' => $model
         ]);
+    }
+
+    public function actionDelete($id)
+    {
+        $model = Course::findOne($id);
+
+        if(!$model){
+            throw new NotFoundHttpException("Curso não encontrado!");
+        }
+
+        $model->delete();
+        return $this->redirect(['course/index']);
     }
 
 }
