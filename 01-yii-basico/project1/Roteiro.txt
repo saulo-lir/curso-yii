@@ -14,4 +14,4 @@ yii migrate/create create_courses_table ----fields="id:primaryKey,name:string,ho
 
 yii migrate/up
 
-5) Deletar a tabela:
+5) Deletar a tabela: yii migrate/down
