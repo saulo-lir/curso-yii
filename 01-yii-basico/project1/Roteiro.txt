@@ -8,10 +8,16 @@ yii gii/controller --controllerClass="app\controllers\CourseController" --action
 
 3) Criando uma migração:
 
-yii migrate/create create_courses_table ----fields="id:primaryKey,name:string,hours:integer"
+Ex.: yii migrate/create create_courses_table --fields="id:primaryKey,name:string,hours:integer"
+
+Ex2.: yii migrate/create create_cadastro_table --fields="id:primaryKey,nome:string(80):notNull,telefone:integer:notNull:unique,email:string:notNull:unique"
+
+4) Adicionar uma nova coluna à uma tabela criada anteriormente:
+
+yii migrate/create add_created_at_column_to_cadastro_table --fields="created_at:datetime:notNull"
 
 4) Subir a migração (criar a tabela):
 
 yii migrate/up
 
-5) Deletar a tabela: yii migrate/down
+5) Deletar versões do banco (ver documentação para mais detalhes): yii migrate/down

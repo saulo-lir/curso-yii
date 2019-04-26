@@ -1,6 +1,8 @@
 <?php
 namespace app\models;
 
+// O Model Contem as regras de negócio e as validações
+
 class CadastroForm extends \yii\base\Model
 {
     // Campos da tabela e do formulário
@@ -15,7 +17,8 @@ class CadastroForm extends \yii\base\Model
         return [
             [['nome', 'telefone', 'email'], 'required'],
             ['email', 'email'],
-            ['telefone', 'number']
+            ['telefone', 'number'],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')] // Setando um valor default para o campo created_at
         ];
     }
 
