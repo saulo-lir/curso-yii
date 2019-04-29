@@ -21,3 +21,9 @@ yii migrate/create add_created_at_column_to_cadastro_table --fields="created_at:
 yii migrate/up
 
 5) Deletar versões do banco (ver documentação para mais detalhes): yii migrate/down
+
+6) Autenticação
+
+Criar a migração de user:
+
+yii migrate/create create_user_table --fields="id:primaryKey,username:string(80):notNull,password:string(60):notNull,authKey:string(120):notNull,accessToken:string(120):notNull"
