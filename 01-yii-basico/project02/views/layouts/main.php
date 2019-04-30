@@ -42,6 +42,9 @@ AppAsset::register($this);
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'Cadastro', 'url' => ['/form/cadastro']], // controller/action
+            !Yii::$app->user->isGuest ? 
+            ( ['label' => 'Produtos', 'url' => ['/site/criar']] ) : 
+            ( Html::tag('li') ),
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (

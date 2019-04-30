@@ -18,14 +18,22 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
+            'access' => [ // Aqui definimos as autorizações de acesso do sistema
                 'class' => AccessControl::className(),
                 'only' => ['logout'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
                         'allow' => true,
+                        'roles' => ['@'], // São os papeis. ou seja, quem pode acessar. o @ siginifica apenas os usuários logados. Caso queiramos que o usuário não logado seja permitido, inserimos uma ?
+                    ],
+                    [
+                        'actions' => ['create', 'update', 'delete'],
+                        'allow' => true,
                         'roles' => ['@'],
+                        'matchCallback' => function(){ // Executa a função em callback quando as actions listadas acima são executadas
+                            return Yii::$app->user->identity->username === 'admin';
+                        }
                     ],
                 ],
             ],
@@ -71,6 +79,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        // user->isGuest = Verifica se o usuário é um convidado, ou seja, se ele NÃO está logado no sistema
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -175,6 +184,8 @@ class SiteController extends Controller
             'value' => 'Teste123',
             'expire' => strtotime('+10 seconds')
         ]));
+
+        echo "Criou a Sessão e o Cookie!";
         
     }
 
@@ -191,6 +202,14 @@ class SiteController extends Controller
         $session->open();
         echo $session->get('campo');
         echo $session->getFlash('msg');
+    }
+
+    public function actionUser()
+    {
+        var_dump(Yii::$app->user);
+
+        // Acessar o usuário logado:
+        // Yii::$app->user->identity
     }
 
 }
