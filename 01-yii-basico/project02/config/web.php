@@ -11,6 +11,7 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@contato' => '/site/contact' // Criando um alias para essa rota
     ],
     'components' => [
         'request' => [
