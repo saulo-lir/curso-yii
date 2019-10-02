@@ -16,14 +16,35 @@ Ex2.: yii migrate/create create_cadastro_table --fields="id:primaryKey,nome:stri
 
 yii migrate/create add_created_at_column_to_cadastro_table --fields="created_at:datetime:notNull"
 
-4) Subir a migração (criar a tabela):
+5) Subir a migração (criar a tabela):
 
 yii migrate/up
 
-5) Deletar versões do banco (ver documentação para mais detalhes): yii migrate/down
+6) Deletar versões do banco (ver documentação para mais detalhes): yii migrate/down
 
-6) Autenticação
+7) Autenticação
 
 Criar a migração de user:
 
 yii migrate/create create_user_table --fields="id:primaryKey,username:string(80):notNull,password:string(60):notNull,authKey:string(120):notNull,accessToken:string(120):notNull"
+
+8) Criar uma migração num módulo específico (modo advanced do projeto yii2):
+
+yii migrate/create --migrationPath=backend/modules/financeiro_legado/migrations create_estado_table --fields="id:primaryKey,uf:string,nome:string"
+
+Para executa-la:
+
+sudo php yii migrate --migrationPath=backend/modules/financeiro_legado/migrations m190430_172552_create_estados_table
+
+9) Migration para inserir novos registros numa tabela específica:
+
+php yii migrate/create --migrationPath=backend/modules/aplicacao/migrations insert_templates_entregas_emails
+
+Dentro da migration, na função safeUp(), usar a função insert():
+
+$this->insert('{{%notification_template}}', [
+            'template' => 'fornecedor_entrega_mensagem',
+            'assunto' => 'Nova Mensagem',
+            'titulo' => 'Olá {fornecedor},',
+            'descricao' => ' texto, texto, texto'
+        ]);
